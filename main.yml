@@ -1,0 +1,6 @@
+---
+- name: Import setup_node playbook
+  ansible.builtin.import_playbook: setup_node.yml
+
+- name: Import setup_engine.yml playbook
+  ansible.builtin.import_playbook: setup_engine.yml
