@@ -1,0 +1,12 @@
+---
+# maintains mainnet inventory grouped by project names
+all:
+  vars:
+    env: mainnet
+  children:
+    chainflip:
+      hosts:
+        validator.chainflip.mainnet.encapsulate.xyz:
+          type: validator
+        fullnode.chainflip.mainnet.encapsulate.xyz:
+          type: fullnode

@@ -1,0 +1,12 @@
+---
+# maintains testnet inventory grouped by project names
+all:
+  vars:
+    env: testnet
+  children:
+    chainflip:
+      hosts:
+        validator.chainflip.testnet.encapsulate.xyz:
+          type: validator
+        fullnode.chainflip.testnet.encapsulate.xyz:
+          type: fullnode

@@ -1,0 +1,31 @@
+---
+# maintains ports, bianry or repo urls
+
+org: encapsulate
+domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
+monitor_server_dns: monitor.encapsulate.xyz
+ansible_port: 8192
+
+architecture_map:
+  x86_64: amd64
+  aarch64: arm64
+
+default_node_types:
+  - validator
+  - default
+
+tmp_dir: /tmp
+
+chainflip:
+  validator:
+    source_url: https://github.com/chainflip-io/chainflip-backend
+    ports:
+      p2p_port: 30333
+      rpc_port: 9944
+      prometheus_port: 9615
+  fullnode:
+    source_url: https://github.com/chainflip-io/chainflip-backend
+    ports:
+      p2p_port: 30333
+      rpc_port: 9944
+      prometheus_port: 9615
