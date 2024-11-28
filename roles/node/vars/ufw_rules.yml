@@ -1,0 +1,33 @@
+---
+node_ufw_rules:
+  validator:
+    - port: "{{ chainflip[type].ports.p2p_port }}"
+      proto: tcp
+      rule: allow
+      from: any
+      comment: p2p_port
+
+    - port: "{{ chainflip[type].ports.prometheus_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: prometheus_port
+
+  fullnode:
+    - port: "{{ chainflip[type].ports.p2p_port }}"
+      proto: tcp
+      rule: allow
+      from: any
+      comment: p2p_port
+
+    - port: "{{ chainflip[type].ports.prometheus_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: prometheus_port
+
+    - port: "{{ chainflip[type].ports.rpc_port }}"
+      proto: tcp
+      rule: allow
+      from: any
+      comment: rpc_port

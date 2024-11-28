@@ -1,0 +1,14 @@
+---
+# maintains file name, binary names, and anything which is not a directory or path
+
+# config file names
+node_chain_spec_file_name:
+  mainnet:
+  testnet: perseverance.chainspec.json
+
+# keys name
+node_node_key_file_name: node_key_file
+
+# binary and shared libraries names
+node_service_default_binary_name: chainflip-node
+node_cli_default_binary_name: chainflip-cli
