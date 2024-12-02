@@ -20,6 +20,6 @@ chainflip:
   validator:
     source_url: https://github.com/chainflip-io/chainflip-backend
     ports:
-      p2p_port: 30333
-      rpc_port: 9944
-      prometheus_port: 9615
+      p2p_port: 30334
+      rpc_port: 9945
+      prometheus_port: 9616
