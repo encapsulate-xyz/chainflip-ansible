@@ -8,5 +8,3 @@ all:
       hosts:
         validator.chainflip.mainnet.encapsulate.xyz:
           type: validator
-        fullnode.chainflip.mainnet.encapsulate.xyz:
-          type: fullnode

@@ -9,11 +9,10 @@ WorkingDirectory={{ node_home_dir }}
 ExecStart={{ node_bin_dir }}/{{ service_identifier }} --chain={{ node_chain_spec_path }} \
 --base-path={{ node_data_dir }} \
 --node-key-file={{ node_node_key_path }} \
-{% if type == "validator" %}--validator {% endif %}\
---port {{ chainflip[type].ports.p2p_port }} \
-{% if type == "fullnode" %}--rpc-external {% endif %}\
---rpc-port {{ chainflip[type].ports.rpc_port }} \
---prometheus-port {{ chainflip[type].ports.prometheus_port }} \
+--validator \
+--port {{ chainflip.validator.ports.p2p_port }} \
+--rpc-port {{ chainflip.validator.ports.rpc_port }} \
+--prometheus-port {{ chainflip.validator.ports.prometheus_port }} \
 --trie-cache-size=0 \
 --sync=warp
 

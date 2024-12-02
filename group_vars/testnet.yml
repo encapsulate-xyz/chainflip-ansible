@@ -3,5 +3,3 @@
 chainflip:
   validator:
     version: 1.7.3
-  fullnode:
-    version: 1.7.3

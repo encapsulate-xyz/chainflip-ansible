@@ -20,6 +20,4 @@ engine_shared_libraries_default_name:
     - libchainflip_engine_v1_6_8.so
     - libchainflip_engine_v1_7_3.so
 
-engine_state_chain_ws_endpoint:
-  validator: ws://127.0.0.1
-  fullnode: ws://0.0.0.0
+engine_state_chain_ws_endpoint: ws://127.0.0.1

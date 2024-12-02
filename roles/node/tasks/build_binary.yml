@@ -7,17 +7,17 @@
 
 - name: Clone the repository to /tmp
   ansible.builtin.git:
-    repo: "{{ vars[project][type].source_url }}"
-    dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project][type].version }}"
+    repo: "{{ chainflip.validator.source_url }}"
+    dest: "{{ tmp_dir }}/{{ service_identifier }}"
+    version: "{{ chainflip.validator.version }}"
     force: true
 
 - name: Build binary using cargo
   ansible.builtin.command:
     cmd: cargo cf-build-release
   args:
-    chdir: "{{ tmp_dir }}/{{ project }}"
-  changed_when: false
+    chdir: "{{ tmp_dir }}/{{ service_identifier }}"
+  creates: "{{ tmp_dir }}/{{ service_identifier }}/target/release/{{ node_service_default_binary_name }}"
 
 - name: Copy binary and shared library files
   ansible.builtin.copy:
@@ -28,8 +28,13 @@
     remote_src: true
     mode: "0755"
   with_items:
-    - { src: "{{ tmp_dir }}/{{ project }}/target/release/{{ node_service_default_binary_name }}", dest: "{{ node_bin_dir }}/{{ service_identifier }}" }
-    - src: "{{ tmp_dir }}/{{ project }}/target/release/{{ node_cli_default_binary_name }}"
+    - { src: "{{ tmp_dir }}/{{ service_identifier }}/target/release/{{ node_service_default_binary_name }}", dest: "{{ node_bin_dir }}/{{ service_identifier }}" }
+    - src: "{{ tmp_dir }}/{{ service_identifier }}/target/release/{{ node_cli_default_binary_name }}"
       dest: "{{ node_bin_dir }}/{{ node_cli_default_binary_name }}"
   notify:
     - Restart service
+
+- name: Clean up the temporary repository directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: absent

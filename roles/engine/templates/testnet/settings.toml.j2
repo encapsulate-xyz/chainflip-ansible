@@ -41,7 +41,7 @@ http_endpoint = "{{ vault[env].engine.solana_backup_http_rpc_endpoint }}"
 ip_address = "{{ ansible_default_ipv4.address }}"
 node_key_file = "{{ engine_node_key_path }}"
 # explain the port is it the node engine p2p port ?
-port = "{{ chainflip[type].ports.p2p_port }}"
+port = "{{ chainflip.validator.ports.p2p_port }}"
 
 # explaint this part
 [signing]
@@ -49,4 +49,4 @@ db_file = "/etc/chainflip/data.db"
 
 [state_chain]
 signing_key_file = "{{ engine_signing_key_path }}"
-ws_endpoint = "{{ engine_state_chain_ws_endpoint[type] }}:{{ chainflip[type].ports.ws_port }}"
+ws_endpoint = "{{ engine_state_chain_ws_endpoint }}:{{ chainflip.validator.ports.ws_port }}"
