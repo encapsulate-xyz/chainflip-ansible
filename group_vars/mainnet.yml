@@ -2,4 +2,4 @@
 # maintains versions and can overwrite all.yml
 chainflip:
   validator:
-    version: 1.6.7
+    version: 1.7.5

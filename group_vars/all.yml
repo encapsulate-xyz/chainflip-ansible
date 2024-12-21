@@ -18,8 +18,10 @@ tmp_dir: /tmp
 
 chainflip:
   validator:
-    source_url: https://github.com/chainflip-io/chainflip-backend
+    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
     ports:
       p2p_port: 30334
       rpc_port: 9945
       prometheus_port: 9616
+      engine_p2p_port: 8078
+      command_server_port: 36079
