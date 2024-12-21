@@ -23,6 +23,7 @@ chainflip:
       p2p_port: 30334
       rpc_port: 9945
       prometheus_port: 9616
+      engine_prometheus_port: 5566
       engine_p2p_port: 8078
       command_server_port: 36079
 
@@ -37,3 +38,12 @@ promtail:
     grpc_listen_port:
       validator: 9087
       fullnode: 9089
+
+process_exporter:
+  service_identifier_suffix: process-exporter
+  source_url: https://github.com/ncabatoff/process-exporter/releases/download
+  file_extension: tar.gz
+  ports:
+    web_listen_address: 
+      validator: 9257
+      fullnode: 9258
