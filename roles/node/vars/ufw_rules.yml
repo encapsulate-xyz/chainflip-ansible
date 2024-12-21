@@ -11,3 +11,15 @@ node_ufw_rules:
       rule: allow
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
+    
+    - port: "{{ chainflip.validator.ports.engine_p2p_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: engine_p2p_port
+
+    - port: "{{ chainflip.validator.ports.engine_prometheus_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: engine_prometheus_port
