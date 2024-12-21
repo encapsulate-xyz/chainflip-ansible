@@ -14,8 +14,8 @@
     directories: "{{ node_directories }}"
     log_file_path: "{{ node_log_file_path }}"
 
-- name: Include build binary task
-  ansible.builtin.include_tasks: build_binary.yml
+- name: Include download binary task
+  ansible.builtin.include_tasks: download_binary.yml
 
 - name: Copy chain spec
   ansible.builtin.copy:
