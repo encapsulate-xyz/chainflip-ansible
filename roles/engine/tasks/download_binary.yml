@@ -1,0 +1,25 @@
+---
+- name: Fetch the engine service binary
+  ansible.builtin.get_url:
+    url: "{{ chainflip.validator.source_url }}/{{ chainflip[type].version }}/{{ engine_engine_default_binary_name }}"
+    dest: "{{ engine_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
+
+- name: Fetch the engine service libraries
+  ansible.builtin.get_url:
+    url: "{{ chainflip.validator.source_url }}/{{ chainflip[type].version }}/{{ item.src }}"
+    dest: "{{ engine_lib_dir }}/{{ item.dest }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  with_items:
+    - { src: "{{ engine_shared_libraries_default_name[0] }}", dest: "{{ engine_shared_libraries_default_name[0] }}" }
+    - { src: "{{ engine_shared_libraries_default_name[1] }}", dest: "{{ engine_shared_libraries_default_name[1] }}" }
+  notify:
+    - Restart service

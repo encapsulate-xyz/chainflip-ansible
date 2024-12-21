@@ -6,8 +6,8 @@
     directories: "{{ engine_directories }}"
     log_file_path: "{{ engine_log_file_path }}"
 
-- name: Include copy binary task
-  ansible.builtin.include_tasks: copy_binary.yml
+- name: Include download binary task
+  ansible.builtin.include_tasks: download_binary.yml
 
 - name: Copy engine configuration file
   ansible.builtin.template:
@@ -29,7 +29,7 @@
       vars:
         vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ engine_node_key_file_name }}"
         secret_destination_path: "{{ engine_node_key_path }}"
-        secret_type: json
+        secret_type: key
 
     - name: Fetch signning key and save
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml

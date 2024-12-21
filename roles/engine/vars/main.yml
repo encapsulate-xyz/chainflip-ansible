@@ -15,9 +15,7 @@ engine_ethereum_private_key_file_name: ethereum_key_file
 # binary and shared libraries names
 engine_engine_default_binary_name: engine-runner
 engine_shared_libraries_default_name:
-  mainnet:
-  testnet:
     - libchainflip_engine_v1_6_8.so
-    - libchainflip_engine_v1_7_3.so
+    - libchainflip_engine_v1_7_5.so
 
 engine_state_chain_ws_endpoint: ws://127.0.0.1

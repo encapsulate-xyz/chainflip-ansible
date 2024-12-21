@@ -4,15 +4,17 @@ engine_home_dir: /opt/{{ service_identifier }}
 
 engine_bin_dir: "{{ engine_home_dir }}/bin"
 engine_config_dir: "{{ engine_home_dir }}/config"
+engine_data_dir: "{{ engine_home_dir }}/data.db"
 engine_env_dir: "{{ engine_home_dir }}/environment"
 engine_log_dir: "{{ engine_home_dir }}/log"
 engine_lib_dir: "{{ engine_home_dir }}/lib"
-engine_key_dir: "{{ engine_home_dir }}/keys"
+engine_key_dir: "{{ engine_home_dir }}/key"
 
 engine_directories:
   - "{{ engine_home_dir }}"
   - "{{ engine_bin_dir }}"
   - "{{ engine_config_dir }}"
+  - "{{ engine_data_dir }}"
   - "{{ engine_env_dir }}"
   - "{{ engine_lib_dir }}"
   - "{{ engine_log_dir }}"
