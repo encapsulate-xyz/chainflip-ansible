@@ -2,9 +2,7 @@
 # maintains file name, binary names, and anything which is not a directory or path
 
 # config file names
-node_chain_spec_file_name:
-  mainnet:
-  testnet: perseverance.chainspec.json
+node_chain_spec_file_name: chainspec.json
 
 # keys name
 node_node_key_file_name: node_key_file

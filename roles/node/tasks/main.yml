@@ -19,7 +19,7 @@
 
 - name: Copy chain spec
   ansible.builtin.copy:
-    src: "{{ env }}/{{ node_chain_spec_file_name[env] }}"
+    src: "{{ env }}/chainspec.json"
     dest: "{{ node_chain_spec_path }}"
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"

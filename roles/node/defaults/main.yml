@@ -16,7 +16,7 @@ node_directories:
   - "{{ node_log_dir }}"
   - "{{ node_key_dir }}"
 
-node_chain_spec_path: "{{ node_config_dir }}/{{ node_chain_spec_file_name[env] }}"
+node_chain_spec_path: "{{ node_config_dir }}/{{ node_chain_spec_file_name }}"
 
 node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"
 
