@@ -25,3 +25,15 @@ chainflip:
       prometheus_port: 9616
       engine_p2p_port: 8078
       command_server_port: 36079
+
+promtail:
+  service_identifier_suffix: promtail
+  source_url: https://github.com/grafana/loki/releases/download
+  file_extension: zip
+  ports:
+    http_listen_port:
+      validator: 9086
+      fullnode: 9088
+    grpc_listen_port:
+      validator: 9087
+      fullnode: 9089
