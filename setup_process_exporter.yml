@@ -4,7 +4,7 @@
   become: true
   gather_facts: true
   vars:
-    node_service_identifier: "{{ group_names[0] }}{{ '' if type in default_node_types else '-' + type }}"
+    node_service_identifier: "{{ group_names[0] }}"
     system_architecture: "{{ architecture_map[ansible_architecture] | default(ansible_architecture) }}"
   vars_files:
     - group_vars/all.yml
@@ -15,7 +15,7 @@
   tasks:
     - name: Set service_identifier
       ansible.builtin.set_fact:
-        # because this Proces Exporter is being used for pushing to loki.services.supra.com, its service_identifier includes the node_service_identifier
+        # because this Proces Exporter metrics is being used for pushing to chainflip, its service_identifier includes the node_service_identifier
         service_identifier: "{{ node_service_identifier }}-{{ proces_exporter.service_identifier_suffix }}"
 
     - name: Include common handlers
