@@ -1,4 +1,12 @@
 ---
+- name: Include the ufw rules vars file
+  ansible.builtin.include_vars:
+    file: vars/ufw_rules.yml
+
+- name: Apply UFW rules
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ engine_ufw_rules }}"
+
 - name: Include user creation task
   ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
   vars:
@@ -20,9 +28,7 @@
     - Restart service
 
 - name: Fetch secrets from HCP Vault and save to files
-  when:
-    - type == 'validator'
-    - fetch_validator_keys | default(false) | bool
+  when: fetch_validator_keys | default(false) | bool
   block:
     - name: Fetch node key and save
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
@@ -31,7 +37,7 @@
         secret_destination_path: "{{ engine_node_key_path }}"
         secret_type: key
 
-    - name: Fetch signning key and save
+    - name: Fetch signing key and save
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
       vars:
         vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ engine_signing_key_file_name }}"
