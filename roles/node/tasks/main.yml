@@ -27,15 +27,13 @@
   notify:
     - Restart service
 
-- name: Fetch secrets from HCP Vault and save to files
-  when:  fetch_validator_keys | default(false) | bool
-  block:
-    - name: Fetch node key and save
-      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
-      vars:
-        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ node_node_key_file_name }}"
-        secret_destination_path: "{{ node_node_key_path }}"
-        secret_type: key
+- name: Fetch node key from HCP Vault and save to files
+  ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+  vars:
+    vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ node_node_key_file_name }}"
+    secret_destination_path: "{{ node_node_key_path }}"
+    secret_type: key
+  when: fetch_validator_keys | default(false) | bool
 
 - name: Copy node systemd service file
   ansible.builtin.template:

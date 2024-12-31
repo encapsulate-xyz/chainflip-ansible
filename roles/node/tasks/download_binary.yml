@@ -1,7 +1,7 @@
 ---
 - name: Fetch the service binary
   ansible.builtin.get_url:
-    url: "{{ chainflip.validator.source_url }}/{{ chainflip[type].version }}/{{ item.src }}"
+    url: "{{ chainflip.node.source_url }}/{{ chainflip.node.version }}/{{ item.src }}"
     dest: "{{ node_bin_dir }}/{{ item.dest }}"
     owner: root
     group: root

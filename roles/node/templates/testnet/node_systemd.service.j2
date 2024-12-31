@@ -10,10 +10,10 @@ ExecStart={{ node_bin_dir }}/{{ service_identifier }} --chain={{ node_chain_spec
 --base-path={{ node_data_dir }} \
 --node-key-file={{ node_node_key_path }} \
 --validator \
---port {{ chainflip.validator.ports.p2p_port }} \
---rpc-port {{ chainflip.validator.ports.rpc_port }} \
+--port {{ chainflip.node.ports.p2p_port }} \
+--rpc-port {{ chainflip.node.ports.rpc_port }} \
 --prometheus-external \
---prometheus-port {{ chainflip.validator.ports.prometheus_port }} \
+--prometheus-port {{ chainflip.node.ports.prometheus_port }} \
 --trie-cache-size=0 \
 --sync=warp
 
