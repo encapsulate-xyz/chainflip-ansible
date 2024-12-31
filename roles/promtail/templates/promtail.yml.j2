@@ -9,8 +9,8 @@ client:
   external_labels:
     network: "perseverance"
     host: "{{ ansible_default_ipv4.address }}"
-    vanity: "{{ promtail_node_vanity_name }}"
-    ss58Address: "{{ promtail_node_id }}"
+    vanity: "{{ chainflip.promtail.node_vanity_name }}"
+    ss58Address: "{{ chainflip.promtail.node_id }}"
   url: https://loki-community.chainflip.xyz/loki/api/v1/push
 
 scrape_configs:
@@ -19,8 +19,8 @@ scrape_configs:
       - targets:
           - localhost
         labels:
-          __path__: /opt/{{ node_service_identifier }}/log/{{ node_service_identifier }}.log
+          __path__: /opt/chainflip-node/log/chainflip-node.log
       - targets:
           - localhost
         labels:
-          __path__: /opt/{{ node_service_identifier }}-engine/log/{{ node_service_identifier }}-engine.log
+          __path__: /opt/chainflip-engine/log/chainflip-engine.log
