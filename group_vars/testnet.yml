@@ -1,5 +1,10 @@
 ---
 # maintains versions and can overwrite all.yml
 chainflip:
-  validator:
+  node:
     version: 1.7.5
+  engine:
+    version: 1.7.5
+    shared_libraries:
+    - libchainflip_engine_v1_6_8.so
+    - libchainflip_engine_v1_7_5.so

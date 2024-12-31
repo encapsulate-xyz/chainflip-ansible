@@ -17,12 +17,15 @@ default_node_types:
 tmp_dir: /tmp
 
 chainflip:
-  validator:
+  node:
     source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
     ports:
       p2p_port: 30334
       rpc_port: 9945
       prometheus_port: 9616
+  engine:
+    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
+    ports:
       engine_prometheus_port: 5566
       engine_p2p_port: 8078
       command_server_port: 36079
@@ -34,10 +37,8 @@ promtail:
   ports:
     http_listen_port:
       validator: 9086
-      fullnode: 9088
     grpc_listen_port:
       validator: 9087
-      fullnode: 9089
 
 process_exporter:
   service_identifier_suffix: process-exporter
@@ -46,4 +47,3 @@ process_exporter:
   ports:
     web_listen_address: 
       validator: 9257
-      fullnode: 9258
