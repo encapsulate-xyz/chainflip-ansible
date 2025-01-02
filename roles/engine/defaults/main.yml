@@ -1,0 +1,31 @@
+---
+# maintains directories and paths
+engine_home_dir: /opt/{{ service_identifier }}
+
+engine_bin_dir: "{{ engine_home_dir }}/bin"
+engine_config_dir: "{{ engine_home_dir }}/config"
+engine_data_dir: "{{ engine_home_dir }}/data.db"
+engine_env_dir: "{{ engine_home_dir }}/environment"
+engine_log_dir: "{{ engine_home_dir }}/log"
+engine_lib_dir: "{{ engine_home_dir }}/lib"
+engine_key_dir: "{{ engine_home_dir }}/key"
+
+engine_directories:
+  - "{{ engine_home_dir }}"
+  - "{{ engine_bin_dir }}"
+  - "{{ engine_config_dir }}"
+  - "{{ engine_data_dir }}"
+  - "{{ engine_env_dir }}"
+  - "{{ engine_lib_dir }}"
+  - "{{ engine_log_dir }}"
+  - "{{ engine_key_dir }}"
+
+engine_config_file_path: "{{ engine_config_dir }}/{{ engine_config_file_name }}"
+
+engine_log_file_path: "{{ engine_log_dir }}/{{ service_identifier }}.log"
+
+engine_environment_general_file_path: "{{ engine_env_dir }}/{{ engine_environment_general_file_name }}"
+
+engine_node_key_path: "{{ engine_key_dir }}/{{ engine_node_key_file_name }}"
+engine_signing_key_path: "{{ engine_key_dir }}/{{ engine_signing_key_file_name }}"
+engine_ethereum_private_key_path: "{{ engine_key_dir }}/{{ engine_ethereum_private_key_file_name }}"

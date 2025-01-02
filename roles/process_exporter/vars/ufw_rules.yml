@@ -1,0 +1,7 @@
+---
+process_exporter_ufw_rules:
+    - port: "{{ process_exporter.ports.web_listen_address[type] }}"
+      proto: tcp
+      rule: allow
+      from: any
+      comment: web_listen_address

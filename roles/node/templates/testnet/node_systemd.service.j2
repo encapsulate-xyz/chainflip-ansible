@@ -1,0 +1,28 @@
+[Unit]
+Description={{ service_identifier }}
+
+[Service]
+User={{ service_identifier }}
+Group={{ service_identifier }}
+WorkingDirectory={{ node_home_dir }}
+
+ExecStart={{ node_bin_dir }}/{{ service_identifier }} --chain={{ node_chain_spec_path }} \
+--base-path={{ node_data_dir }} \
+--node-key-file={{ node_node_key_path }} \
+--validator \
+--port {{ chainflip.node.ports.p2p_port }} \
+--rpc-port {{ chainflip.node.ports.rpc_port }} \
+--prometheus-external \
+--prometheus-port {{ chainflip.node.ports.prometheus_port }} \
+--trie-cache-size=0 \
+--sync=warp
+
+Restart=always
+RestartSec=4
+LimitNOFILE=65536
+MemoryLimit=64G
+StandardOutput=append:{{ node_log_file_path }}
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target

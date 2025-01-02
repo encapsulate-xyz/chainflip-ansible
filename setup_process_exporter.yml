@@ -1,0 +1,26 @@
+---
+- name: Setup Process Exporter
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    node_service_identifier: "{{ group_names[0] }}"
+    system_architecture: "{{ architecture_map[ansible_architecture] | default(ansible_architecture) }}"
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/default.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+  tasks:
+    - name: Set service_identifier
+      ansible.builtin.set_fact:
+        # because this Proces Exporter metrics is being used for pushing to chainflip, its service_identifier includes the node_service_identifier
+        service_identifier: "{{ node_service_identifier }}-{{ proces_exporter.service_identifier_suffix }}"
+
+    - name: Include common handlers
+      ansible.builtin.include_role:
+        name: common
+    - name: Include proces_exporter role
+      ansible.builtin.include_role:
+        name: proces_exporter

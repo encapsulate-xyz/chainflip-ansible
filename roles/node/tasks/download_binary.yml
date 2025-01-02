@@ -1,0 +1,14 @@
+---
+- name: Fetch the service binary
+  ansible.builtin.get_url:
+    url: "{{ chainflip.node.source_url }}/{{ chainflip.node.version }}/{{ item.src }}"
+    dest: "{{ node_bin_dir }}/{{ item.dest }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  with_items:
+    - { src: "{{ node_service_default_binary_name }}", dest: "{{ service_identifier }}" }
+    - { src: "{{ node_cli_default_binary_name }}", dest: "{{ node_cli_default_binary_name }}" }
+  notify:
+    - Restart service

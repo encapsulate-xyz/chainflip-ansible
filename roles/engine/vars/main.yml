@@ -1,0 +1,18 @@
+---
+# maintains file name, binary names, and anything which is not a directory or path
+
+# config file names
+engine_config_file_name: Settings.toml
+
+# Environment file names
+engine_environment_general_file_name: "{{ service_identifier }}.env"
+
+# keys name
+engine_node_key_file_name: node_key_file
+engine_signing_key_file_name: signing_key_file
+engine_ethereum_private_key_file_name: ethereum_key_file
+
+# binary and shared libraries names
+engine_engine_default_binary_name: engine-runner
+
+engine_state_chain_ws_endpoint: ws://127.0.0.1

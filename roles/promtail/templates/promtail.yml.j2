@@ -1,0 +1,26 @@
+server:
+  http_listen_port: {{ promtail.ports.http_listen_port[type] }}
+  grpc_listen_port: {{ promtail.ports.grpc_listen_port[type] }}
+
+positions:
+  filename: {{ promtail_position_file_path }}
+
+client:
+  external_labels:
+    network: "perseverance"
+    host: "{{ ansible_default_ipv4.address }}"
+    vanity: "{{ chainflip.promtail.node_vanity_name }}"
+    ss58Address: "{{ chainflip.promtail.node_id }}"
+  url: https://loki-community.chainflip.xyz/loki/api/v1/push
+
+scrape_configs:
+  - job_name: systemd
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          __path__: /opt/chainflip-node/log/chainflip-node.log
+      - targets:
+          - localhost
+        labels:
+          __path__: /opt/chainflip-engine/log/chainflip-engine.log

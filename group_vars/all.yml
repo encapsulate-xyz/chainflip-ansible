@@ -14,20 +14,36 @@ default_node_types:
   - validator
   - default
 
-sui:
-  validator:
-    source_url: https://releases.sui.io
+tmp_dir: /tmp
+
+chainflip:
+  node:
+    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
     ports:
-      server_listen_port: 9191
-      metrics_port: 9186
-  fullnode:
-    version: 88888888888
-    source_url: https://releases.sui.io
+      p2p_port: 30334
+      rpc_port: 9945
+      prometheus_port: 9616
+  engine:
+    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
     ports:
-      server_listen_port: 9191
-      metrics_port: 9186
-  bridge:
-    source_url: https://releases.sui.io
-    ports:
-      server_listen_port: 9191
-      metrics_port: 9186
+      engine_prometheus_port: 5566
+      engine_p2p_port: 8078
+      command_server_port: 36079
+
+promtail:
+  service_identifier_suffix: promtail
+  source_url: https://github.com/grafana/loki/releases/download
+  file_extension: zip
+  ports:
+    http_listen_port:
+      validator: 9086
+    grpc_listen_port:
+      validator: 9087
+
+process_exporter:
+  service_identifier_suffix: process-exporter
+  source_url: https://github.com/ncabatoff/process-exporter/releases/download
+  file_extension: tar.gz
+  ports:
+    web_listen_address: 
+      validator: 9257

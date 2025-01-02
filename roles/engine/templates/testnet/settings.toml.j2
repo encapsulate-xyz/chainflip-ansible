@@ -1,0 +1,60 @@
+[btc.rpc]
+basic_auth_user = "flip"
+basic_auth_password = "flip"
+http_endpoint = "{{ vault.testnet.engine.btc_http_rpc_endpoint }}"
+
+[btc.backup_rpc]
+basic_auth_user = "flip"
+basic_auth_password = "flip"
+http_endpoint = "{{ vault.testnet.engine.btc_backup_http_rpc_endpoint }}"
+
+[dot.rpc]
+http_endpoint = "{{ vault.testnet.engine.polkadot_http_rpc_endpoint }}"
+ws_endpoint = "{{ vault.testnet.engine.polkadot_ws_rpc_endpoint }}"
+
+[eth]
+private_key_file = "{{ engine_ethereum_private_key_path }}"
+
+[eth.rpc]
+http_endpoint = "{{ vault.testnet.engine.ethereum_http_rpc_endpoint }}"
+ws_endpoint = "{{ vault.testnet.engine.ethereum_ws_rpc_endpoint }}"
+
+[arb]
+private_key_file = "{{ engine_ethereum_private_key_path }}"
+
+[arb.rpc]
+ws_endpoint = "{{ vault.testnet.engine.arbitrum_ws_rpc_endpoint }}"
+http_endpoint = "{{ vault.testnet.engine.arbitrum_http_rpc_endpoint }}"
+
+# Optional (but recommended)
+[arb.backup_rpc]
+ws_endpoint = "{{ vault.testnet.engine.arbitrum_backup_ws_rpc_endpoint }}"
+http_endpoint = "{{ vault.testnet.engine.arbitrum_backup_http_rpc_endpoint }}"
+
+[sol.rpc]
+http_endpoint = "{{ vault.testnet.engine.solana_http_rpc_endpoint }}"
+
+[sol.backup_rpc]
+http_endpoint = "{{ vault.testnet.engine.solana_backup_http_rpc_endpoint }}"
+
+[node_p2p]
+ip_address = "{{ ansible_default_ipv4.address }}"
+node_key_file = "{{ engine_node_key_path }}"
+port = "{{ chainflip.engine.ports.engine_p2p_port }}"
+
+# explaint this part
+[signing]
+db_file = "{{ engine_data_dir }}"
+
+[state_chain]
+signing_key_file = "{{ engine_signing_key_path }}"
+ws_endpoint = "{{ engine_state_chain_ws_endpoint }}:{{ chainflip.node.ports.rpc_port }}"
+
+# optional
+[logging]
+command_server_port = {{ chainflip.engine.ports.command_server_port }}
+span_lifecycle = false
+
+[prometheus]
+hostname = "0.0.0.0"
+port = "{{ chainflip.engine.ports.engine_prometheus_port }}"
