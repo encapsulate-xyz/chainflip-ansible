@@ -9,5 +9,5 @@ chainflip:
     - libchainflip_engine_v1_6_8.so
     - libchainflip_engine_v1_7_5.so
   promtail:
-    node_id:
-    node_vanity_name:
+    node_id: "cFLWUtkuodZA7AZnqNFStuyRnU9HbFYEKyERJ2qxJokY9ujB4"
+    node_vanity_name: KingSuper
