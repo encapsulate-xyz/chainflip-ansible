@@ -19,6 +19,10 @@ private_key_file = "{{ engine_ethereum_private_key_path }}"
 http_endpoint = "{{ vault.testnet.engine.ethereum_http_rpc_endpoint }}"
 ws_endpoint = "{{ vault.testnet.engine.ethereum_ws_rpc_endpoint }}"
 
+[eth.backup_rpc]
+http_endpoint = "{{ vault.testnet.engine.ethereum_backup_http_rpc_endpoint }}"
+ws_endpoint = "{{ vault.testnet.engine.ethereum_backup_ws_rpc_endpoint }}"
+
 [arb]
 private_key_file = "{{ engine_ethereum_private_key_path }}"
 
