@@ -108,6 +108,14 @@ ansible-playbook setup_node.yml -i inventory/testnet.yml --limit chainflip
 ansible-playbook setup_engine.yml -i inventory/testnet.yml --limit chainflip
 ```
 
+**Note**:
+
+If you are migrating your Chainflip validator node to a new server, use this command to rotate the keys and restart the engine and node services.
+
+```bash
+chainflip-cli --config-root <config_file_path> rotate
+```
+
 **Example Output:**
 
 ```bash
