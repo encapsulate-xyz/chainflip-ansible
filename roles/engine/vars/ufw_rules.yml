@@ -3,7 +3,7 @@ engine_ufw_rules:
     - port: "{{ chainflip.engine.ports.engine_p2p_port }}"
       proto: tcp
       rule: allow
-      from: "{{ monitor_server_dns }}"
+      from: any
       comment: engine_p2p_port
 
     - port: "{{ chainflip.engine.ports.engine_prometheus_port }}"
