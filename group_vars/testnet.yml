@@ -4,10 +4,10 @@ chainflip:
   node:
     version: 1.7.3
   engine:
-    version: 1.7.3
+    version: 1.7.8
     shared_libraries:
     - libchainflip_engine_v1_6_8.so
-    - libchainflip_engine_v1_7_3.so
+    - libchainflip_engine_v1_7_8.so
   promtail:
     node_id: "cFLWUtkuodZA7AZnqNFStuyRnU9HbFYEKyERJ2qxJokY9ujB4"
     node_vanity_name: KingSuper
