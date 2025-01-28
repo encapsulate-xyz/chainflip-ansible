@@ -15,7 +15,7 @@ ExecStart={{ node_bin_dir }}/{{ service_identifier }} --chain={{ node_chain_spec
 --prometheus-external \
 --prometheus-port {{ chainflip.node.ports.prometheus_port }} \
 --trie-cache-size=0 \
---sync=warp
+--sync=warp --detailed-log-output
 
 Restart=always
 RestartSec=4
