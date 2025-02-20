@@ -9,7 +9,7 @@
 
 - name: Download and unarchive the binary
   ansible.builtin.unarchive:
-    src: "{{ chainflip.engine.source_url }}/{{ chainflip.engine.version }}/chainflip-backend-bin.zip"
+    src: "{{ chainflip.node.source_url }}/{{ chainflip.node.version }}/chainflip-backend-bin.zip"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
     remote_src: true
     owner: root
@@ -24,6 +24,7 @@
     group: root
     force: true
     mode: "0755"
+    remote_src: true
   with_items:
     - { src: "{{ node_service_default_binary_name }}", dest: "{{ service_identifier }}" }
     - { src: "{{ node_cli_default_binary_name }}", dest: "{{ node_cli_default_binary_name }}" }

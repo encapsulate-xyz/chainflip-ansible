@@ -34,6 +34,7 @@
     group: root
     force: true
     mode: "0755"
+    remote_src: true
   loop: "{{ chainflip.engine.shared_libraries }}"
   notify:
     - Restart service
