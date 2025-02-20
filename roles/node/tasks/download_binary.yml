@@ -1,7 +1,24 @@
 ---
+- name: Create a tmp directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Download and unarchive the binary
+  ansible.builtin.unarchive:
+    src: "{{ chainflip.engine.source_url }}/{{ chainflip.engine.version }}/chainflip-backend-bin.zip"
+    dest: "{{ tmp_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0755"
+
 - name: Fetch the service binary
-  ansible.builtin.get_url:
-    url: "{{ chainflip.node.source_url }}/{{ chainflip.node.version }}/{{ item.src }}"
+  ansible.builtin.copy:
+    src: "{{ tmp_dir }}/{{ service_identifier }}/artifacts/chainflip-backend-bin/{{ item.src }}"
     dest: "{{ node_bin_dir }}/{{ item.dest }}"
     owner: root
     group: root
@@ -12,3 +29,8 @@
     - { src: "{{ node_cli_default_binary_name }}", dest: "{{ node_cli_default_binary_name }}" }
   notify:
     - Restart service
+
+- name: Clean up the temporary files in /tmp
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: absent

@@ -18,13 +18,13 @@ tmp_dir: /tmp
 
 chainflip:
   node:
-    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
+    source_url: https://artifacts.chainflip.io
     ports:
       p2p_port: 30334
       rpc_port: 9945
       prometheus_port: 9616
   engine:
-    source_url: https://github.com/chainflip-io/chainflip-backend/releases/download
+    source_url: https://artifacts.chainflip.io
     ports:
       engine_prometheus_port: 5566
       engine_p2p_port: 8078
