@@ -6,6 +6,7 @@ all:
   children:
     chainflip:
       hosts:
+        validator.chainflip.mainnet.encapsulate.xyz:
         chainflip_node_host:
           ansible_host: validator.chainflip.mainnet.encapsulate.xyz
           type: node
