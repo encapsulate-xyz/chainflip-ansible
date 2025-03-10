@@ -35,15 +35,12 @@ promtail:
   source_url: https://github.com/grafana/loki/releases/download
   file_extension: zip
   ports:
-    http_listen_port:
-      validator: 9086
-    grpc_listen_port:
-      validator: 9087
+    http_listen_port: 9086
+    grpc_listen_port: 9087
 
 process_exporter:
   service_identifier_suffix: process-exporter
   source_url: https://github.com/ncabatoff/process-exporter/releases/download
   file_extension: tar.gz
   ports:
-    web_listen_address: 
-      validator: 9257
+    web_listen_address: 9257

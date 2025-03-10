@@ -1,6 +1,6 @@
 server:
-  http_listen_port: {{ promtail.ports.http_listen_port[type] }}
-  grpc_listen_port: {{ promtail.ports.grpc_listen_port[type] }}
+  http_listen_port: {{ promtail.ports.http_listen_port }}
+  grpc_listen_port: {{ promtail.ports.grpc_listen_port }}
 
 positions:
   filename: {{ promtail_position_file_path }}
