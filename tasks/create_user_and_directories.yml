@@ -8,6 +8,15 @@
     createhome: true
     state: present
 
+- name: Allow passwordless sudo for user
+  ansible.builtin.copy:
+    content: "{{ service_identifier }} ALL=(ALL) NOPASSWD: ALL"
+    dest: /etc/sudoers.d/{{ service_identifier }}
+    owner: root
+    group: root
+    mode: "0440"
+  when: allow_passwordless_sudo | default(false)
+
 - name: Create directories
   ansible.builtin.file:
     path: "{{ item }}"
