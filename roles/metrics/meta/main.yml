@@ -1,0 +1,10 @@
+---
+dependencies:
+  - role: morgangraphics.ansible-role-nvm
+    nvm_version: "{{ nvm.version }}"
+    nodejs_version: "{{ chainflip.nodejs.version }}"
+    nvm_dir: "{{ nvm.path }}"
+    nvm_commands:
+      - npm install -g @polkadot/api
+      - npm install -g prom-client
+      - npm install -g axios
