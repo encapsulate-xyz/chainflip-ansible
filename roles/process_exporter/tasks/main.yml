@@ -7,18 +7,12 @@
   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
   loop: "{{ process_exporter_ufw_rules }}"
 
-- name: Include create user task
-  ansible.builtin.include_tasks: tasks/create_user.yml
-  vars:
-    user_name: "{{ service_identifier }}"
-    allow_passwordless_sudo: true
-    home: "{{ process_exporter_home_dir }}"
-
 - name: Include create directories task
-  ansible.builtin.include_tasks: tasks/create_directories.yml
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
   vars:
     user: "{{ service_identifier }}"
     directories: "{{ process_exporter_directories }}"
+    allow_passwordless_sudo: true
     log_file_path: "{{ process_exporter_log_file_path }}"
 
 - name: Include Download, Unarchive and Copy Binary task
@@ -32,7 +26,7 @@
 
 - name: Copy process-exporter config
   ansible.builtin.copy:
-    src: process-exporter.yml
+    src: process_exporter.yml
     dest: "{{ process_exporter_config_file_path }}"
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"

@@ -1,0 +1,17 @@
+[Unit]
+Description=Check Chainflip Authority Status
+
+[Service]
+Type=oneshot
+User={{ service_identifier }}
+Group={{ service_identifier }}
+WorkingDirectory={{ metrics_home_dir }}
+EnvironmentFile={{ metrics_environment_general_file_path }}
+ExecStart=/bin/bash -c 'source {{ nvm.path }}/nvm.sh && node {{ metrics_script_file_path }} 2>/dev/null'
+LimitNOFILE=65536
+MemoryMax=64G
+StandardOutput=append:{{ metrics_log_file_path }}
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target

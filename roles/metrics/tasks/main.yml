@@ -1,0 +1,44 @@
+---
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ metrics_home_dir }}"
+    directories: "{{ metrics_directories }}"
+    log_file_path: "{{ metrics_log_file_path }}"
+
+- name: Copy metrics script
+  ansible.builtin.template:
+    src: "authority_metrics.js.j2"
+    dest: "{{ metrics_script_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+
+- name: Copy general environment file
+  ansible.builtin.template:
+    src: general.env.j2
+    dest: "{{ metrics_environment_general_file_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Copy chainflip metrics systemd service file
+  ansible.builtin.template:
+    src: authority_metrics.service.j2
+    dest: "/etc/systemd/system/{{ service_identifier }}.service"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+
+- name: Copy chainflip metrics timer service file
+  ansible.builtin.template:
+    src: authority_metrics.timer.j2
+    dest: "/etc/systemd/system/{{ service_identifier }}.timer"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart timer

@@ -6,8 +6,8 @@ chainflip:
   engine:
     version: 1.7.5
     shared_libraries:
-    - libchainflip_engine_v1_6_8.so
-    - libchainflip_engine_v1_7_5.so
+      - libchainflip_engine_v1_6_8.so
+      - libchainflip_engine_v1_7_5.so
   promtail:
     node_id:
     node_vanity_name:

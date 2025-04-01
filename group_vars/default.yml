@@ -4,3 +4,6 @@ promtail:
 
 process_exporter:
   version: 0.8.4
+
+nvm:
+  version: 0.40.1
