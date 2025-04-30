@@ -4,10 +4,10 @@ chainflip:
   node:
     version: 1.8.4
   engine:
-    version: 1.8.4
+    version: 1.9.1
     shared_libraries:
-      - libchainflip_engine_v1_7_10.so
       - libchainflip_engine_v1_8_4.so
+      - libchainflip_engine_v1_9_1.so
   grandpa_authority_id: "0x275eeb7c568b1efd908b87a2a7ca453665229812cbe4da614cb51e2a8234de1c"
   nodejs:
     version: v18.20.5
