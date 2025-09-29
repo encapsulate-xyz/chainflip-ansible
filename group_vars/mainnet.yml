@@ -2,12 +2,15 @@
 # maintains versions and can overwrite all.yml
 chainflip:
   node:
-    version: 1.7.5
+    version: 1.11.5
   engine:
-    version: 1.7.5
+    version: 1.11.5
     shared_libraries:
-      - libchainflip_engine_v1_6_8.so
-      - libchainflip_engine_v1_7_5.so
+      - libchainflip_engine_v1_10_4.so
+      - libchainflip_engine_v1_11_5.so
+  grandpa_authority_id:
+  nodejs:
+    version: v18.20.5
   promtail:
     node_id:
     node_vanity_name:
