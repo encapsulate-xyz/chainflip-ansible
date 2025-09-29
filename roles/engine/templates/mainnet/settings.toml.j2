@@ -3,10 +3,10 @@ basic_auth_user = ""
 basic_auth_password = ""
 http_endpoint = "{{ vault.mainnet.engine.btc_http_rpc_endpoint }}"
 
-# [btc.backup_rpc]
-# basic_auth_user = ""
-# basic_auth_password = ""
-# http_endpoint = "{{ vault.mainnet.engine.btc_backup_http_rpc_endpoint }}"
+[btc.backup_rpc]
+basic_auth_user = ""
+basic_auth_password = ""
+http_endpoint = "{{ vault.mainnet.engine.btc_backup_http_rpc_endpoint }}"
 
 [dot.rpc]
 http_endpoint = "{{ vault.mainnet.engine.polkadot_http_rpc_endpoint }}"
