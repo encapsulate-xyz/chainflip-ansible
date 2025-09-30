@@ -30,7 +30,10 @@ This playbook relies on HashiCorp Vault to securely retrieve sensitive files, su
 The playbook dynamically retrieves private keys and environment secrets for Mina from HashiCorp Vault. The keys and secrets follow a structured path format:
 `<environment>/<project>/<organization>/<type>/<file_name>`
 For example:
-`testnet/namada/encapsulate/validator/node_key_file`
+`testnet/chainflip/encapsulate/node/node_key_file`
+`testnet/chainflip/encapsulate/engine/node_key_file`
+`testnet/chainflip/encapsulate/engine/signing_key_file`
+`testnet/chainflip/encapsulate/engine/ethereum_key_file`
 
 This structure ensures easy organization and secure retrieval of secrets.
 
