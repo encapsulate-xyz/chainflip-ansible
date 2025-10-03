@@ -4,10 +4,10 @@ chainflip:
   node:
     version: 1.11.5
   engine:
-    version: 1.11.5
+    version: 1.11.10
     shared_libraries:
       - libchainflip_engine_v1_10_4.so
-      - libchainflip_engine_v1_11_5.so
+      - libchainflip_engine_v1_11_10.so
   grandpa_authority_id:
   nodejs:
     version: v18.20.5
