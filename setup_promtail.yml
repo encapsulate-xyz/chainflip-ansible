@@ -24,3 +24,17 @@
     - name: Include promtail role
       ansible.builtin.include_role:
         name: promtail
+        public: true
+
+  post_tasks:
+    - name: Verify promtail
+      block:
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            # verify_service.yml reads vars[project] even when expected_version is given, and this playbook doesn't set project
+            project: "{{ group_names[0] }}"
+            log_file_path: "{{ promtail_log_file_path }}"
+            version_command: "{{ promtail_bin_dir }}/{{ service_identifier }} -version"
+            expected_version: "{{ promtail.version }}"
+            health_url: "http://localhost:{{ promtail.ports.http_listen_port }}/ready"

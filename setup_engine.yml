@@ -28,3 +28,17 @@
         - name: Include engine role
           ansible.builtin.include_role:
             name: engine
+            public: true
+
+  post_tasks:
+    - name: Verify engine
+      when: type in allowed_node_types
+      block:
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ engine_log_file_path }}"
+            # the runner loads the engine libraries from engine_lib_dir, as the service does through its environment file
+            version_command: "env LD_LIBRARY_PATH={{ engine_lib_dir }} {{ engine_bin_dir }}/{{ service_identifier }} --version"
+            # the log filter server on the command server port starts before the engine connects to the node, unlike prometheus
+            health_url: "http://localhost:{{ chainflip.engine.ports.command_server_port }}/tracing"
